@@ -1,0 +1,7 @@
+{
+	"window": {
+    "toolbar": true
+  },
+	"name": "test-runner",
+	"main": "./html/index.html"
+}
