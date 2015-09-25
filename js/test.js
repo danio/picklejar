@@ -1,7 +1,5 @@
-function output(text) {
-  console.log(text);
-}
+var output = require('outputconsole');
 
 var runtests = require('runtests');
-output('running tests')
-runtests.runTests(['features'], output);
+var document;
+runtests.runTests(['features'], output, document);

@@ -1,0 +1,30 @@
+#filebrowser {
+  padding: 0;
+  margin: 0;
+  /*background-color: #f8C;*/
+  position: absolute;
+  left: 0px;
+  right: 500px;
+  top: 100px;
+  bottom: 0px;
+}
+
+#controls {
+  padding: 0;
+  margin: 0;
+  /*background-color: #0fC;*/
+  position: absolute;
+  left: 0px;
+  right: 500px;
+  top: 0px;
+  bottom: 350px;
+}
+
+#output {
+  float: left;
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: 0;
+  bottom: 50px;
+}

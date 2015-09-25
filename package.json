@@ -1,7 +1,7 @@
-{
-	"window": {
-    "toolbar": true
-  },
-	"name": "test-runner",
-	"main": "./html/index.html"
+{	"window":
+	{ "toolbar": true }
+, "name": "test-runner"
+,	"main": "./html/index.html"
+, "scripts":
+	{ "test": "echo hello" }
 }
