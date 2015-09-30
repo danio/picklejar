@@ -14,10 +14,14 @@ if (nw)
 
 var runtests = nw.require('runtests');
 var output = nw.require('outputdocument');
+var folder_view = nw.require('folder_view');
 
 
 function runTests() {
   runtests.runTests(['features'], output, document);
 }
+
+var folder = new folder_view.Folder($('#filebrowser'));
+folder.open(cwd() + '/features');
 
 runTests();
