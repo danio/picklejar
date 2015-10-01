@@ -2,17 +2,18 @@
 <html>
 <head>
     <title>Test runner</title>
-    <!-- <script type="text/javascript" src="main.js"></script> -->
     <link href="./style.css" rel="stylesheet">
+    <!-- <script type="text/javascript" src="../js/main.js"></script> -->
     <script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
 </head>
 <body>
 
-
 <div id="filebrowser">Files</div>
 <div id="controls">
-  <button type="button" onclick="runTests()">Run</button>
-  <button type="button">Run all</button>
+  <button id="runTests" type="button">Run</button>
+  <button id="runAllTests" type="button">Run all</button>
+  <button id="openFile" type="button">Browse</button>
+  <input id="folderName" type="file" style="display:None;" />
 </div>
 <div id="output">Output</div>
 
