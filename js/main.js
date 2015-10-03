@@ -25,8 +25,10 @@ function runTests() {
 }
 
 function fileChanged(filepath) {
-  var dir = path.dirname(filepath);
-  folder.open(dir);
+  if (filepath) {
+    var dir = path.dirname(filepath);
+    folder.open(dir);
+  }
 }
 
 $('#runTests').on('click', runTests);
