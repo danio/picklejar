@@ -28,3 +28,9 @@
   top: 0;
   bottom: 50px;
 }
+
+ /*elements in folder_view*/
+.file.focus {
+  background-color: #08C;
+  -webkit-border-radius: 4px;
+}

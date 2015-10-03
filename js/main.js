@@ -36,4 +36,13 @@ $('#folderName').on('change', function() { fileChanged($('#folderName').val()); 
 var folder = new folder_view.Folder($('#filebrowser'));
 folder.open(cwd() + '/features');
 
+folder.on('navigate', function(dir, mime) {
+  if (mime.type === 'folder') {
+    folder.open(dir);
+  } else {
+    runTests();
+  }
+});
+
+
 runTests();
