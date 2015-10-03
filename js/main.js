@@ -1,3 +1,5 @@
+global.$ = $; // seems to be needed so modules (e.g. folder_view) can use jquery
+
 // Make some globals to access nw.js functions in a cross-version way
 try {
   if (nw)
@@ -23,7 +25,7 @@ function runTests() {
 }
 
 function fileChanged(filepath) {
-  var dir = path.win32.dirname(filepath); // todo make work cross-platform
+  var dir = path.dirname(filepath);
   folder.open(dir);
 }
 
