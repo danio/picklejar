@@ -20,8 +20,8 @@ var runtests = nw.require('runtests');
 var output = nw.require('outputdocument');
 var folder_view = nw.require('folder_view');
 
-function runTests() {
-  runtests.runTests([folder.dir], output, document);
+function runTests(testPaths) {
+  runtests.runTests(testPaths, output, document);
 }
 
 function fileChanged(filepath) {
@@ -31,20 +31,20 @@ function fileChanged(filepath) {
   }
 }
 
-$('#runTests').on('click', runTests);
-$('#openFile').on('click', function() { $('#folderName').trigger('click'); } );
+$('#runAllTests').on('click', function() { runTests([folder.dir]); });
+$('#openFile').on('click', function() { $('#folderName').trigger('click'); });
 $('#folderName').on('change', function() { fileChanged($('#folderName').val()); });
 
 var folder = new folder_view.Folder($('#filebrowser'));
 folder.open(path.join(cwd(), 'features'));
 
-folder.on('navigate', function(dir, mime) {
+folder.on('navigate', function(path, mime) {
   if (mime.type === 'folder') {
-    folder.open(dir);
+    folder.open(path);
   } else {
-    runTests();
+    runTests([path]);
   }
 });
 
 
-runTests();
+runTests([folder.dir]);
