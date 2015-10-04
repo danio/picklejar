@@ -21,7 +21,7 @@ var output = nw.require('outputdocument');
 var folder_view = nw.require('folder_view');
 
 function runTests() {
-  runtests.runTests(['features'], output, document);
+  runtests.runTests([folder.dir], output, document);
 }
 
 function fileChanged(filepath) {
