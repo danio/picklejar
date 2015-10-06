@@ -19,6 +19,7 @@ var path = nw.require('path');
 var runtests = nw.require('runtests');
 var output = nw.require('outputdocument');
 var folder_view = nw.require('folder_view');
+var MruDirCache = nw.require("mru-dir-cache");
 
 function runTests(testPaths) {
   runtests.runTests(testPaths, output, document);
@@ -27,6 +28,7 @@ function runTests(testPaths) {
 function fileChanged(filepath) {
   if (filepath) {
     var dir = path.dirname(filepath);
+    cache.store(dir, '');
     folder.open(dir);
   }
 }
@@ -36,7 +38,6 @@ $('#openFile').on('click', function() { $('#folderName').trigger('click'); });
 $('#folderName').on('change', function() { fileChanged($('#folderName').val()); });
 
 var folder = new folder_view.Folder($('#filebrowser'));
-folder.open(path.join(cwd(), 'features'));
 
 folder.on('navigate', function(path, mime) {
   if (mime.type === 'folder') {
@@ -46,5 +47,13 @@ folder.on('navigate', function(path, mime) {
   }
 });
 
-
-runTests([folder.dir]);
+var cache = MruDirCache({ max: 10 }, localStorage);
+var latest = cache.latest();
+if (latest) {
+  folder.open(latest);
+  runTests([folder.dir]);
+}
+else {
+  // first time app has been run
+  $('#folderName').trigger('click'); // open file browser
+}

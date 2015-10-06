@@ -4,4 +4,7 @@
 ,	"main": "./html/index.html"
 , "scripts":
 	{ "test": "echo hello" }
+, "dependencies": {
+		"lru-cache": ">2.7.0"
+	}
 }

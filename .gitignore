@@ -4,3 +4,4 @@ credits.html
 locales/
 icudtl.dat
 nw.pak
+node_modules/lru-cache/
