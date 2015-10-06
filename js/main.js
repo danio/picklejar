@@ -1,20 +1,5 @@
 global.$ = $; // seems to be needed so modules (e.g. folder_view) can use jquery
 
-// Make some globals to access nw.js functions in a cross-version way
-try {
-  if (nw)
-  {
-    // nw.js 0.13 or later
-    cwd = function() { return nw.process.cwd(); }
-  }
-} catch(e) {
-  // nw.js 0.12
-  cwd = function() { return process.cwd(); }
-  nw = {
-    require: function(module) { return require(module);}
-  };
-}
-
 var path = nw.require('path');
 var runtests = nw.require('runtests');
 var output = nw.require('outputdocument');
