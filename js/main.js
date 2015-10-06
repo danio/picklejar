@@ -2,12 +2,14 @@ global.$ = $; // seems to be needed so modules (e.g. folder_view) can use jquery
 
 var path = nw.require('path');
 var runtests = nw.require('runtests');
-var output = nw.require('outputdocument');
+var OutputDocument = nw.require('outputdocument');
 var folder_view = nw.require('folder_view');
 var MruDirCache = nw.require("mru-dir-cache");
 
+var output = OutputDocument(document);
+
 function runTests(testPaths) {
-  runtests.runTests(testPaths, output, document);
+  runtests.runTests(testPaths, output);
 }
 
 function fileChanged(filepath) {
