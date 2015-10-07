@@ -2,11 +2,13 @@ global.$ = $; // seems to be needed so modules (e.g. folder_view) can use jquery
 
 var path = nw.require('path');
 var runtests = nw.require('runtests');
+var GherkinParser = require('gherkinparser');
 var OutputDocument = nw.require('outputdocument');
 var folder_view = nw.require('folder_view');
 var MruDirCache = nw.require("mru-dir-cache");
 
-var output = OutputDocument(document);
+var gherkinParser = GherkinParser();
+var output = OutputDocument(document, gherkinParser);
 
 function runTests(testPaths) {
   runtests.runTests(testPaths, output);
