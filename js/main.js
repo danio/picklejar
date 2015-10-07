@@ -8,7 +8,7 @@ var folder_view = nw.require('folder_view');
 var MruDirCache = nw.require("mru-dir-cache");
 
 var gherkinParser = GherkinParser();
-var output = OutputDocument(document, gherkinParser);
+var output = OutputDocument(gherkinParser);
 
 function runTests(testPaths) {
   runtests.runTests(testPaths, output);
