@@ -36,10 +36,18 @@ folder.on('navigate', function(path, mime) {
   }
 });
 
+function navigate(e) {
+  dir = e.target.selectedOptions[0].text;
+  cache.store(dir, '');
+  folder.open(dir);
+}
+
 var cache = MruDirCache({ max: 10 }, localStorage);
 var latest = cache.latest();
 if (latest) {
   folder.open(latest);
+  cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
+  $('#dirlist').on('change', navigate);
   runTests([folder.dir]);
 }
 else {
