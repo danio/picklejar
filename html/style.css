@@ -1,34 +1,13 @@
-#filebrowser {
-  padding: 0;
-  margin: 0;
-  /*background-color: #f8C;*/
-  position: absolute;
-  left: 0px;
-  right: 500px;
-  top: 100px;
-  bottom: 0px;
-}
-
-#controls {
-  padding: 0;
-  margin: 0;
-  /*background-color: #0fC;*/
-  position: absolute;
-  left: 0px;
-  right: 500px;
-  top: 0px;
-  bottom: 350px;
-}
-
-#output {
+#filearea {
   float: left;
-  position: absolute;
-  left: 200px;
-  right: 0;
-  top: 0;
-  bottom: 50px;
 }
-
+.clearfix {
+  overflow: auto;
+}
+#filebrowser {
+  /*A little bit of blank space below the file list for deselecting any file*/
+  margin-bottom: 50px;
+}
  /*elements in folder_view*/
 .file.focus {
   background-color: #08C;
