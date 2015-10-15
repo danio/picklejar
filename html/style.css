@@ -4,7 +4,7 @@
 .clearfix {
   overflow: auto;
 }
-#filebrowser {
+#fileList {
   /*A little bit of blank space below the file list for deselecting any file*/
   margin-bottom: 50px;
 }

@@ -16,11 +16,11 @@ function setDirListFromCache(cache) {
     cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
 }
 
-function newFolderOpened(filepath, folder, cache) {
+function newFolderOpened(filepath, fileList, cache) {
   if (filepath) {
     var dir = path.dirname(filepath);
     cache.store(dir, '');
-    folder.open(dir);
+    fileList.open(dir);
     setDirListFromCache(cache);
   }
 }
@@ -29,24 +29,24 @@ $(document).ready(function() {
   var cache = MruDirCache({ max: 10 }, localStorage);
   var gherkinParser = GherkinParser();
   var output = OutputDocument(gherkinParser);
-  var folder = new folder_view.Folder($('#filebrowser'));
+  var fileList = new folder_view.Folder($('#fileList'));
 
-  $('#runAllTests').on('click', function() { runTests([folder.dir], output); });
+  $('#runAllTests').on('click', function() { runTests([fileList.dir], output); });
   // The file browse button is pressed
   $('#openFile').on('click', function() { $('#folderName').trigger('click'); });
   // The file browse action is completed
-  $('#folderName').on('change', function() { newFolderOpened($('#folderName').val(), folder, cache); });
+  $('#folderName').on('change', function() { newFolderOpened($('#folderName').val(), fileList, cache); });
   // dirlist (the folder drop-down list) is clicked on
   $('#dirlist').on('change', function(e) {
     dir = e.target.selectedOptions[0].text;
     cache.store(dir, '');
-    folder.open(dir);
+    fileList.open(dir);
   });
 
   // callback from folder_view when a file is double clicked on
-  folder.on('navigate', function(path, mime) {
-    if (mime.type === 'folder') {
-      folder.open(path);
+  fileList.on('navigate', function(path, mime) {
+    if (mime.type === 'fileList') {
+      fileList.open(path);
     } else {
       runTests([path], output);
     }
@@ -54,9 +54,9 @@ $(document).ready(function() {
 
   var latest = cache.latest();
   if (latest) {
-    folder.open(latest);
+    fileList.open(latest);
     setDirListFromCache(cache);
-    runTests([folder.dir], output);
+    runTests([fileList.dir], output);
   }
   else {
     // first time app has been run
