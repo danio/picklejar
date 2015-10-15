@@ -11,11 +11,17 @@ function runTests(testPaths, output) {
   runtests.runTests(testPaths, output);
 }
 
-function fileChanged(filepath, folder, cache) {
+function setDirListFromCache(cache) {
+    $('#dirlist').children().remove();
+    cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
+}
+
+function newFolderOpened(filepath, folder, cache) {
   if (filepath) {
     var dir = path.dirname(filepath);
     cache.store(dir, '');
     folder.open(dir);
+    setDirListFromCache(cache);
   }
 }
 
@@ -29,7 +35,13 @@ $(document).ready(function() {
   // The file browse button is pressed
   $('#openFile').on('click', function() { $('#folderName').trigger('click'); });
   // The file browse action is completed
-  $('#folderName').on('change', function() { fileChanged($('#folderName').val(), folder, cache); });
+  $('#folderName').on('change', function() { newFolderOpened($('#folderName').val(), folder, cache); });
+  // dirlist (the folder drop-down list) is clicked on
+  $('#dirlist').on('change', function(e) {
+    dir = e.target.selectedOptions[0].text;
+    cache.store(dir, '');
+    folder.open(dir);
+  });
 
   // callback from folder_view when a file is double clicked on
   folder.on('navigate', function(path, mime) {
@@ -43,13 +55,7 @@ $(document).ready(function() {
   var latest = cache.latest();
   if (latest) {
     folder.open(latest);
-    cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
-    // The folder drop-down list is clicked on
-    $('#dirlist').on('change', function(e) {
-      dir = e.target.selectedOptions[0].text;
-      cache.store(dir, '');
-      folder.open(dir);
-    });
+    setDirListFromCache(cache);
     runTests([folder.dir], output);
   }
   else {
