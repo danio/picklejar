@@ -8,8 +8,16 @@
   /*A little bit of blank space below the file list for deselecting any file*/
   margin-bottom: 50px;
 }
+
  /*elements in folder_view*/
 .file.focus {
   background-color: #08C;
   -webkit-border-radius: 4px;
+}
+
+.file .icon {
+  display: inline;
+}
+.file .name {
+  display: inline;
 }
