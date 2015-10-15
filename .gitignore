@@ -5,3 +5,6 @@ locales/
 icudtl.dat
 nw.pak
 node_modules/lru-cache/
+node_modules/jade/
+node_modules/underscore/
+node_modules/.bin/
