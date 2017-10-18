@@ -7,7 +7,7 @@ Currently it only supports behave
 # Installation
 
  1. npm install
- 1. download and unzip nw.js (tested with 0.12 and 0.13) (https://nwjs.io/downloads/)
+ 1. download and unzip nw.js (tested with 0.12, 0.13, 0.26) (https://nwjs.io/downloads/)
  1. run nw <picklejar> where picklejar is the directory where you cloned to
 
 # Developer notes
