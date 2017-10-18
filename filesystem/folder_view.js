@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var jade = require('jade');
 var util = require('util');
-var mime = require('mime');
+var mime = require('./mime');
 
 // Template engine
 var gen_files_view = jade.compile([

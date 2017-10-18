@@ -4,9 +4,4 @@ credits.html
 locales/
 icudtl.dat
 nw.pak
-node_modules/lru-cache/
-node_modules/jade/
-node_modules/underscore/
-node_modules/.bin/
-node_modules/commander/
-node_modules/mkdirp/
+node_modules

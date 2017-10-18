@@ -1,19 +1,19 @@
 global.$ = $; // seems to be needed so modules (e.g. folder_view) can use jquery
 
 var path = nw.require('path');
-var runtests = nw.require('runtests');
-var GherkinParser = require('gherkinparser');
-var OutputDocument = nw.require('outputdocument');
-var folder_view = nw.require('folder_view');
-var MruDirCache = nw.require("mru-dir-cache");
+var runtests = nw.require('../testrunner/runtests');
+var GherkinParser = require('../testrunner/gherkinparser');
+var OutputDocument = nw.require('../output/outputdocument');
+var folder_view = nw.require('../filesystem/folder_view');
+var MruDirCache = nw.require('../filesystem/mru-dir-cache');
 
 function runTests(testPaths, output) {
   runtests.runTests(testPaths, output);
 }
 
 function setDirListFromCache(cache) {
-    $('#dirlist').children().remove();
-    cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
+  $('#dirlist').children().remove();
+  cache.cache_.keys().forEach( function(x) { $('#dirlist').append('<option>' + x + '</option>'); });
 }
 
 function newFolderOpened(filepath, fileList, cache) {

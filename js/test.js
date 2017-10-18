@@ -1,5 +1,5 @@
-var OutputConsole = require('outputconsole');
-var runtests = require('runtests');
+var OutputConsole = require('../output/outputconsole');
+var runtests = require('../testrunner/runtests');
 
 var output = OutputConsole();
 runtests.runTests(['features'], output);

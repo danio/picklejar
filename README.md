@@ -12,6 +12,6 @@ Currently it only supports behave
 
 # Developer notes
 
-The basic application logic can be found in main.js. The underlying functionality is provided by custom node modules found in the node_modules directory.
+The basic application logic can be found in main.js. The underlying functionality is provided by modules separated by functional area.
 
 test.js allows the test runner logic to be exercised without the nw.js GUI. Run it with node. It expects to find a `features` folder in the directory from which you run node with tests to run.
